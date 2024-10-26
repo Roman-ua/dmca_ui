@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Simple Transactional Email</title>
+    <style media="all" type="text/css">
+        .button { font-family: Helvetica, sans-serif; font-size: 15px !important; padding: 8px 40px; max-width: 450px; display: inline-block; text-align: center; background: transparent; border: 1px solid #656565; color: #3f3f3f !important; text-decoration: none; border-radius: 5px; margin: 12px 0 5px 0}
+        .btn-primary table td:hover {
+            background-color: #656565 !important;
+        }
+
+        .btn-primary a:hover {
+            background-color: #656565 !important;
+            border-color: #656565 !important;
+        }
+        @media only screen and (max-width: 640px) {
+            .desktop {
+                display: none;
+            }
+            .wrapper {
+                padding: 15px !important;
+            }
+
+            .content {
+                padding: 0 !important;
+            }
+
+            .container {
+                padding: 0 !important;
+                padding-top: 8px !important;
+                width: 100% !important;
+            }
+
+            .main {
+                border-left-width: 0 !important;
+                border-radius: 0 !important;
+                border-right-width: 0 !important;
+            }
+
+            .btn table {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            .btn a {
+                font-size: 16px !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            .address {
+                display: block !important;
+                margin-bottom: 2px;
+            }
+            .mobileText {
+                font-size: 16px !important;
+            }
+            .separator {
+                display: none;
+            }
+        }
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        .apple-link a {
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            text-decoration: none !important;
+        }
+
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+    </style>
+</head>
+<body style="font-family: Helvetica, sans-serif; -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.3; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #ffffff; margin: 0; padding: 0;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 100%;" width="100%" bgcolor="#f4f5f6">
+        <tr>
+            <td class="container" style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; max-width: 520px; padding: 0; padding-top: 24px; width: 520px; margin: 0 auto;" width="520" valign="top">
+                <div class="content" style="box-sizing: border-box; display: block; margin: 0; max-width: 520px; padding: 0;">
+                    <!-- START CENTERED WHITE CONTAINER -->
+                    <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; width: 100%;" width="100%">
+                        <!-- START MAIN CONTENT AREA -->
+                        <tr>
+                            <td class="wrapper" style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; box-sizing: border-box; padding: 24px;" valign="top">
+                                <p style="padding-bottom: 40px; margin: 0 !important;">
+                                    <a href="https://my.dmcanow.io/img/login" style="text-decoration: none;">
+                                        <img src="https://dmcanow.io/img/logo.png" alt="Company Logo" title="Company Logo" style="display:block" width="166" height="80">
+                                    </a>
+                                </p>
+                                <p style="font-family: Helvetica, sans-serif; font-size: 22px; font-weight: bold; margin: 0; padding-bottom: 24px;">⚠️ Attention: DMCA Takedown Notices Only</p>
+                                <p class="mobileText" style="line-height: 26px; font-family: Helvetica, sans-serif; font-size: 15px; font-weight: normal; margin: 0; margin-bottom: 12px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: orange;">
+                                    <span>The email address</span>
+                                    <a href="mailto:notice@dmcanow.io" style="text-decoration: underline; text-decoration-color: orange; color: #000000; font-weight: bold">notice@dmcanow.io</a>
+                                    <span> is exclusively designated for</span>
+                                    <br class="desktop">
+                                    DMCA Takedown notices.
+                                </p>
+                                <p class="mobileText" style="line-height: 24px; font-family: Helvetica, sans-serif; font-size: 15px; font-weight: normal; margin: 0; margin-bottom: 12px;">
+                                    Any other type of communication sent to this email address will not be reviewed or processed.
+                                </p>
+                                <p class="mobileText" style="line-height: 24px; font-family: Helvetica, sans-serif; font-size: 15px; font-weight: normal; margin: 0;">
+                                    Please do not reply to this email.
+                                </p>
+                                <p class="mobileText" style="line-height: 24px; font-family: Helvetica, sans-serif; font-size: 15px; margin: 12px 0 0 0;">
+                                    Thank you,<br>
+                                    <a href="#" style="text-decoration: none !important; color: #000000 !important;">dmcanow.io</a> Team
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="wrapper" style="padding-left: 24px; padding-right: 24px; font-family: Helvetica, sans-serif; vertical-align: top; color: #616265; font-size: 12px;" valign="top">
+                                <p style="margin: 0 !important; padding-bottom: 0 !important;">If you need help, please email us at <a href="mailto:support@dmcanow.io." style="text-decoration: none !important; color: #0984cf; font-size: 12px;">support@dmcanow.io.</a></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="wrapper" style="padding: 24px; font-family: Helvetica, sans-serif; vertical-align: top; color: #9a9ea6; font-size: 12px;" valign="top">
+                                <span class="apple-link" style="color: #616265; font-size: 10px;">
+                                    <span class="address">© 2024 DMCA Now LLC <span class="separator">|</span> </span>
+                                    <span class="address">100 S. Dixie Hwy, 3rd Floor<span class="separator">,</span> </span>
+                                    <span class="address">West Palm Beach, FL 33401<span class="separator">,</span> </span>
+                                    <span class="address">United States</span></span>
+                                <br>
+                                <a class="address" href="https://my.dmcanow.io." style="text-decoration: none !important; color: #9a9ea6; font-size: 10px; display: inline-block; padding-right: 7px">Terms and Conditions</a>
+                                <a class="address" href="https://my.dmcanow.io." style="text-decoration: none !important; color: #9a9ea6; font-size: 10px; display: inline-block; padding-right: 7px">Privacy Policy</a>
+                                <a class="address" href="https://my.dmcanow.io." style="text-decoration: none !important; color: #9a9ea6; font-size: 10px;">Service Agreement</a>
+                            </td>
+                        </tr>
+                        <!-- END MAIN CONTENT AREA -->
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<!--c@dmcanow.io -->
+<!--cl@incorporatenow.com-->
+<!--roma@incorporatenow.com-->
