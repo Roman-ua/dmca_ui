@@ -7,6 +7,9 @@ const RenderEmails = () => {
   const [email, setEmail] = useState('c@dmcanow.io');
   const [subject, setSubject] = useState('Тестовое письмо');
 
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
   const htmlFiles = [
     { link: 'Company_Created.html', title: 'Company Created' },
     { link: 'Complete_Order_3.html', title: 'Complete Order' },
@@ -53,25 +56,31 @@ const RenderEmails = () => {
       });
   };
   const send = () => {
-    try {
-      fetch('https://sender-w6ve.onrender.com/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          to: email,
-          subject: subject,
-          text: 'Это текст письма',
-          html: htmlContent,
-        }),
-      });
-    } catch (error) {
+    fetch('https://sender-w6ve.onrender.com/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: email,
+        subject: subject,
+        text: 'Это текст письма',
+        html: htmlContent,
+      }),
+    }).then(() => {
+      setSuccess('Message sent successfully');
+      setTimeout(() => {
+        setSuccess('');
+      }, 7000)
+    }).catch(() => {
+      setError('Error sending email');
+      setTimeout(() => {
+        setError('');
+      }, 7000)
       console.error('Ошибка при отправке письма:', error);
-    }
+    });
   };
 
-  console.log(htmlFiles, 'htmlFiles')
   return (
     <div>
       <div className="pb-10 bg-white">
@@ -106,11 +115,13 @@ const RenderEmails = () => {
               className="mr-2 outline-0 block rounded border-0 px-4 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mainBlue sm:text-sm sm:leading-6"
             />
             <div
-              className="bg-mainBlue text-white px-4 py-2 rounded font-bold w-fit hover:cursor-pointer"
+              className="bg-mainBlue mr-2 text-white px-4 py-2 rounded font-bold w-fit hover:cursor-pointer"
               onClick={send}
             >
               Send Email
             </div>
+            {error && <div className="text-red-600 font-bold">{error}</div>}
+            {success && <div className="text-green-600 font-bold">{success}</div>}
           </div>
         )}
       </div>
