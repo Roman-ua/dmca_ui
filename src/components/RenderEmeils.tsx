@@ -1,49 +1,84 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
+
+const htmlFiles = [
+  { link: 'Company_Created.html', title: 'Company Created' },
+  { link: 'Complete_Order_3.html', title: 'Complete Order' },
+  {
+    link: 'Customer_is_Not_Specified_in_the_Notice_2.html',
+    title: 'Customer is Not Specified in the Notice',
+  },
+  {
+    link: 'Former_Customer_Notification_2.html',
+    title: 'Former Customer Notification',
+  },
+  { link: 'Invited_to_company_2.html', title: 'Invited to company' },
+  {
+    link: 'New_DMCA_Amendment_Order_3.html',
+    title: 'New DMCA Amendment Order',
+  },
+  {
+    link: 'New_DMCA_Amendment_Order_-_Complete_+_Domains_Added_3.html',
+    title: 'New DMCA Amendment Order - Complete',
+  },
+  {
+    link: 'New_DMCA_Amendment_Order_Complete_Representative_3.html',
+    title: 'New DMCA Amendment Order Complete Representative',
+  },
+  { link: 'New_Order_3.html', title: 'New Order' },
+  { link: 'Notice_Email.html', title: 'Notice Email' },
+  {
+    link: 'Request_to_Send_Only_DMCA_Notices_2.html',
+    title: 'Request to Send Only DMCA Notices',
+  },
+  { link: 'Reset_Pass.html', title: 'Reset Pass' },
+  { link: 'Reset_Pass_Confirmation.html', title: 'Reset Pass Confirmation' },
+];
+
+
+function classNames(...classes: (string | boolean)[]) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const RenderEmails = () => {
+  const location = useLocation();
+
   const [htmlContent, setHtmlContent] = useState('');
   const [email, setEmail] = useState('c@dmcanow.io');
   const [subject, setSubject] = useState('Тестовое письмо');
+  const [activeBtn, setActiveBtn] = useState('');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const htmlFiles = [
-    { link: 'Company_Created.html', title: 'Company Created' },
-    { link: 'Complete_Order_3.html', title: 'Complete Order' },
-    {
-      link: 'Customer_is_Not_Specified_in_the_Notice_2.html',
-      title: 'Customer is Not Specified in the Notice',
-    },
-    {
-      link: 'Former_Customer_Notification_2.html',
-      title: 'Former Customer Notification',
-    },
-    { link: 'Invited_to_company_2.html', title: 'Invited to company' },
-    {
-      link: 'New_DMCA_Amendment_Order_3.html',
-      title: 'New DMCA Amendment Order',
-    },
-    {
-      link: 'New_DMCA_Amendment_Order_-_Complete_+_Domains_Added_3.html',
-      title: 'New DMCA Amendment Order - Complete',
-    },
-    {
-      link: 'New_DMCA_Amendment_Order_Complete_Representative_3.html',
-      title: 'New DMCA Amendment Order Complete Representative',
-    },
-    { link: 'New_Order_3.html', title: 'New Order' },
-    { link: 'Notice_Email.html', title: 'Notice Email' },
-    {
-      link: 'Request_to_Send_Only_DMCA_Notices_2.html',
-      title: 'Request to Send Only DMCA Notices',
-    },
-    { link: 'Reset_Pass.html', title: 'Reset Pass' },
-    { link: 'Reset_Pass_Confirmation.html', title: 'Reset Pass Confirmation' },
-  ];
+
+  const queryKeyHandler = (location: Location, key: string, value?: string) => {
+    const searchParams = new URLSearchParams(location.search);
+    const myParam = searchParams.get(key);
+
+    if (value) {
+      searchParams.set(key, value);
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.replaceState(null, '', newUrl);
+    }
+
+    return myParam || '';
+  };
+
+  const templateFormQuery = queryKeyHandler(location, 'template');
+
+  useEffect(() => {
+    if (templateFormQuery) {
+      const file = htmlFiles.find((file) => file.title.replaceAll(' ', '_') === templateFormQuery);
+      if (file) {
+        setActiveBtn(file.title);
+        loadHtmlFile(file.link);
+      }
+    }
+  }, [templateFormQuery]);
 
   const loadHtmlFile = (fileName: string) => {
     fetch(`/html/${fileName}`)
@@ -89,9 +124,16 @@ const RenderEmails = () => {
       <div className="pb-10 bg-white">
         {htmlFiles.map((file, index) => (
           <button
-            className="bg-mainBlue text-white py-1.5 px-2 m-1.5 rounded"
+            className={classNames(
+              'bg-mainBlue text-white py-1.5 px-2 m-1.5 rounded',
+              file.title === activeBtn ? 'bg-mainBlue' : 'bg-gray-500'
+            )}
             key={index}
-            onClick={() => loadHtmlFile(file.link)}
+            onClick={() => {
+              setActiveBtn(file.title);
+              loadHtmlFile(file.link)
+              queryKeyHandler(location, 'template', `${file.title.replaceAll(' ', '_')}`);
+            }}
           >
             {file.title}
           </button>
