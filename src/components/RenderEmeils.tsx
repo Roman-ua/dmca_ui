@@ -18,6 +18,12 @@ const htmlFiles = [
     subj:'DMCA Agent Order 12435 for ABC Company'
   },
   {
+    link: 'DMCA_Agent_Order_Edited.html',
+    title: 'DMCA Agent Order Edited',
+    sectionId: 1,
+    subj:'DMCA Agent Order 12435 edited for ABC Company'
+  },
+  {
     link: 'DMCA_Amendment_Order.html',
     title: 'DMCA Amendment Order',
     sectionId: 5,
