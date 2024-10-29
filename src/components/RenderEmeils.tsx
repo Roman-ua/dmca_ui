@@ -8,57 +8,68 @@ const htmlFiles = [
   {
     link: 'DMCA_Agent_Order_Complete.html',
     title: 'DMCA Agent Order - Complete',
-    sectionId: 1
+    sectionId: 1,
+    subj: 'DMCA Agent Order 12435 for ABC Company'
   },
   {
     link: 'DMCA_Agent_Order.html',
     title: 'DMCA Agent Order',
-    sectionId: 1
+    sectionId: 1,
+    subj:'DMCA Agent Order 12435 for ABC Company'
   },
   {
     link: 'DMCA_Amendment_Order.html',
     title: 'DMCA Amendment Order',
-    sectionId: 5
+    sectionId: 5,
+    subj: 'DMCA Agent Amendment Order 32456 for ABC Company'
   },
   {
     link: 'DMCA_Amendment_Order_Complete.html',
     title: 'DMCA Amendment Order - Complete',
-    sectionId: 5
+    sectionId: 5,
+    subj: 'DMCA Agent Amendment Order 56423 for ABC Company'
   },
   {
     link: 'Notice.html',
     title: 'Notice',
-    sectionId: 2
+    sectionId: 2,
+    subj: '867 - DMCA Takedown Notice'
   },
   {
     link: 'Request_to_Send_Only_DMCA_Notices_2.html',
     title: 'Request to Send Only DMCA Notices',
-    sectionId: 2
+    sectionId: 2,
+    subj: 'incoming_email_subject'
   },
   {
     link: 'Former_Customer_Notification_2.html',
     title: 'Former Customer Notification',
-    sectionId: 2
+    sectionId: 2,
+    subj: 'incoming_email_subject'
   },
   {
     link: 'Customer_is_Not_Specified_in_the_Notice_2.html',
     title: 'Customer is Not Specified in the Notice',
-    sectionId: 2
+    sectionId: 2,
+    subj: 'incoming_email_subject'
   },
   {
     link: 'Invite.html',
     title: 'Invite',
-    sectionId: 3
+    sectionId: 3,
+    subj: 'Welcome to dmcanow.io! Invitation to join ABC Company'
   },
   {
     link: 'Password_Reset.html',
     title: 'Password Reset',
-    sectionId: 4
+    sectionId: 4,
+    subj: 'Reset your dmcanow.io password'
   },
   {
     link: 'Password_Reset_Confirmation.html',
     title: 'Password Reset - Confirmation',
-    sectionId: 4
+    sectionId: 4,
+    subj: 'Your password was updated'
   },
 ];
 
@@ -121,6 +132,7 @@ const RenderEmails = () => {
         setActiveBtn(file.title);
         loadHtmlFile(file.link);
         setActiveSection(file.sectionId);
+        setSubject(file.subj);
       }
     }
   }, [templateFormQuery]);
@@ -229,6 +241,7 @@ const RenderEmails = () => {
                         setActiveBtn(btn.title);
                         loadHtmlFile(btn.link);
                         setActiveSection(btn.sectionId);
+                        setSubject(btn.subj);
                         queryKeyHandler(location, 'template', `${btn.title.replaceAll(' ', '_')}`);
                       }}
                     >
@@ -241,10 +254,13 @@ const RenderEmails = () => {
                     </button>
                   )
                 })}
-
               </div>
               {htmlContent && activeSection === section.id && (
-                <div className="bg-white flex items-center justify-center p-4 mt-4">
+                <div className="bg-white flex items-center justify-center flex-col p-4 mt-4">
+                  <div className="mb-4">
+                    <span className="text-gray-500 font-bold text-xl">Subject:</span>
+                    <span className="text-gray-700 font-bold text-xl ml-2">{subject}</span>
+                  </div>
                   <div
                     className="bg-white w-[600px] border border-gray-200 rounded py-6"
                     dangerouslySetInnerHTML={{__html: htmlContent}}
