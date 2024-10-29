@@ -48,6 +48,12 @@ const htmlFiles = [
     subj: 'incoming_email_subject'
   },
   {
+    link: 'No_service.html',
+    title: 'No Service',
+    sectionId: 2,
+    subj: 'From email that we received'
+  },
+  {
     link: 'Customer_is_Not_Specified_in_the_Notice_2.html',
     title: 'Customer is Not Specified in the Notice',
     sectionId: 2,
