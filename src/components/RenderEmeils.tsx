@@ -269,12 +269,15 @@ const RenderEmails = () => {
               </div>
               {htmlContent && activeSection === section.id && (
                 <div className="bg-white flex items-center justify-center flex-col p-4 mt-4">
-                  <div className="mb-4 flex items-center">
-                    <span className="text-gray-500 font-bold">Subject:</span>
-                    <span className="border py-1.5 px-2 rounded text-gray-700 font-bold ml-2">{subject}</span>
+                  <div className="w-[600px] flex items-center border-t border-r border-l rounded-t px-2 py-2">
+                    {subject === 'incoming_email_subject' ? (
+                      <span className="text-gray-700 text-sm font-bold bg-gray-200">{`{ ${subject} }`}</span>
+                    ) : (
+                      <span className="text-gray-700 text-sm font-bold">{subject}</span>
+                    )}
                   </div>
                   <div
-                    className="bg-white w-[600px] border border-gray-200 rounded py-6"
+                    className="bg-white w-[600px] border border-gray-200 rounded-b py-6"
                     dangerouslySetInnerHTML={{__html: htmlContent}}
                   ></div>
                 </div>
