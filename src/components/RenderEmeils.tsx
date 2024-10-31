@@ -269,9 +269,9 @@ const RenderEmails = () => {
               </div>
               {htmlContent && activeSection === section.id && (
                 <div className="bg-white flex items-center justify-center flex-col p-4 mt-4">
-                  <div className="mb-4">
+                  <div className="mb-4 flex items-center">
                     <span className="text-gray-500 font-bold">Subject:</span>
-                    <span className="text-gray-700 font-bold ml-2">{subject}</span>
+                    <span className="border py-1.5 px-2 rounded text-gray-700 font-bold ml-2">{subject}</span>
                   </div>
                   <div
                     className="bg-white w-[600px] border border-gray-200 rounded py-6"
