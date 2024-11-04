@@ -18,7 +18,7 @@ const htmlFiles = [
   },
   {
     link: 'DMCA_Agent_Order_Edited.html',
-    title: 'DMCA Agent Order Edited',
+    title: 'DMCA Agent Order - Edited',
     sectionId: 1,
     subj: `DMCA Agent Order ({order_id}) for {company_name}`,
     subjOne: 'DMCA Agent Order (',
