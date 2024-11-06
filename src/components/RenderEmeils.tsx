@@ -306,7 +306,7 @@ const RenderEmails = () => {
                 </div>
                 {htmlContent[section.id] && (
                   <div className="bg-white flex items-center justify-center flex-col">
-                    <div className="flex items-center justify-end gap-x-2 mb-3 w-full">
+                    <div className="flex items-center justify-end gap-x-2 mb-3 w-full relative">
                       <input
                         id="email"
                         name="email"
@@ -333,8 +333,8 @@ const RenderEmails = () => {
                           </svg>
                         ) : 'Send Email'}
                       </div>
-                      {error && <div className="text-red-600 font-bold">{error}</div>}
-                      {success && <div className="text-green-600 font-bold">{success}</div>}
+                      {error && <div className="text-red-600 font-bold absolute -top-6 right-0">{error}</div>}
+                      {success && <div className="text-green-600 font-bold absolute -top-6 right-0">{success}</div>}
                     </div>
                     <div className="w-[600px] flex items-center border-t border-r border-l rounded-t px-2 py-2">
                       {!subject[section.id].vars && (
