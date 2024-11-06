@@ -7,7 +7,7 @@ import {FaArrowRight} from "react-icons/fa";
 const htmlFiles = [
   {
     link: 'DMCA_Agent_Order.html',
-    title: 'DMCA Agent Order',
+    title: '📧 DMCA Agent Order',
     sectionId: 1,
     subj: `DMCA Agent Order ({order_id}) for {company_name}`,
     subjOne: 'DMCA Agent Order (',
@@ -18,7 +18,7 @@ const htmlFiles = [
   },
   {
     link: 'DMCA_Agent_Order_Edited.html',
-    title: 'DMCA Agent Order - Edited',
+    title: '📧 DMCA Agent Order - Edited',
     sectionId: 1,
     subj: `DMCA Agent Order ({order_id}) for {company_name}`,
     subjOne: 'DMCA Agent Order (',
@@ -29,7 +29,7 @@ const htmlFiles = [
   },
   {
     link: 'DMCA_Agent_Order_Complete.html',
-    title: 'DMCA Agent Order - Complete',
+    title: '📧 DMCA Agent Order - Complete',
     sectionId: 1,
     subj: `DMCA Agent Order ({order_id}) for {company_name}`,
     subjOne: 'DMCA Agent Order (',
@@ -40,7 +40,7 @@ const htmlFiles = [
   },
   {
     link: 'DMCA_Amendment_Order.html',
-    title: 'DMCA Amendment Order',
+    title: '📧 DMCA Amendment Order',
     sectionId: 5,
     subj: 'DMCA Agent Amendment Order ({order_id}) for {company_name}',
     subjOne: 'DMCA Agent Amendment Order (',
@@ -51,7 +51,7 @@ const htmlFiles = [
   },
   {
     link: 'DMCA_Amendment_Order_Complete.html',
-    title: 'DMCA Amendment Order - Complete',
+    title: '📧 DMCA Amendment Order - Complete',
     sectionId: 5,
     subj: 'DMCA Agent Amendment Order ({order_id}) for {company_name}',
     subjOne: 'DMCA Agent Amendment Order (',
@@ -62,7 +62,7 @@ const htmlFiles = [
   },
   {
     link: 'Notice.html',
-    title: 'Notice - Email',
+    title: '📧 Notice - Email',
     sectionId: 2,
     subj: 'incoming_email_subject',
     subjOne: '',
@@ -72,8 +72,30 @@ const htmlFiles = [
     vars: true
   },
   {
+    link: 'Notice_Fax.html',
+    title: '📠 Notice - Fax',
+    sectionId: 2,
+    subj: 'notice_id - DMCA Takedown Notice',
+    subjOne: '',
+    varOne: '{notice_id}',
+    subjTwo: ' - DMCA Takedown Notice',
+    varTwo: '',
+    vars: true
+  },
+  {
+    link: 'Notice_Mail.html',
+    title: '✉️ Notice - Mail',
+    sectionId: 2,
+    subj: 'notice_id - DMCA Takedown Notice',
+    subjOne: '',
+    varOne: `{notice_id}`,
+    subjTwo: ' - DMCA Takedown Notice',
+    varTwo: '',
+    vars: true
+  },
+  {
     link: 'Request_to_Send_Only_DMCA_Notices_2.html',
-    title: 'Request to Send Only DMCA Notices',
+    title: '📧 Request to Send Only DMCA Notices',
     sectionId: 2,
     subj: 'incoming_email_subject',
     subjOne: '',
@@ -84,7 +106,7 @@ const htmlFiles = [
   },
   {
     link: 'Former_Customer_Notification_2.html',
-    title: 'Former Customer Notification',
+    title: '📧 Former Customer Notification',
     sectionId: 2,
     subj: 'incoming_email_subject',
     subjOne: '',
@@ -95,7 +117,7 @@ const htmlFiles = [
   },
   {
     link: 'No_service.html',
-    title: 'No Service',
+    title: '📧 No Service',
     sectionId: 2,
     subj: 'incoming_email_subject',
     subjOne: '',
@@ -106,7 +128,7 @@ const htmlFiles = [
   },
   {
     link: 'Customer_is_Not_Specified_in_the_Notice_2.html',
-    title: 'Customer is Not Specified in the Notice',
+    title: '📧 Customer is Not Specified in the Notice',
     sectionId: 2,
     subj: 'incoming_email_subject',
     subjOne: '',
@@ -117,7 +139,7 @@ const htmlFiles = [
   },
   {
     link: 'Invite.html',
-    title: 'Invitation - Join Company',
+    title: '📧 Invitation - Join Company',
     sectionId: 3,
     subj: 'Welcome to dmcanow.io! Invitation to join {company_name}',
     subjOne: 'Welcome to dmcanow.io! Invitation to join',
@@ -128,14 +150,14 @@ const htmlFiles = [
   },
   {
     link: 'Password_Reset.html',
-    title: 'Password Reset',
+    title: '📧 Password Reset',
     sectionId: 4,
     subj: 'Reset your dmcanow.io password',
     vars: false
   },
   {
     link: 'Password_Reset_Confirmation.html',
-    title: 'Password Reset - Confirmation',
+    title: '📧 Password Reset - Confirmation',
     sectionId: 4,
     subj: 'Your dmcanow.io password was updated',
     vars: false
@@ -208,7 +230,6 @@ const RenderEmails = () => {
     fetch(`/html/${fileName}`)
       .then((response) => response.text())
       .then((data) => {
-        const currentFile = htmlFiles.find((file) => file.link === fileName);
         setHtmlContent((prev) => {
           return {...prev, [sectionId]: data}
         });
@@ -274,7 +295,6 @@ const RenderEmails = () => {
                           queryKeyHandler(location, 'template', `${btn.title.replaceAll(' ', '_')}`);
                         }}
                       >
-                        <span className="mr-2">📧</span>
                         {btn.title}
                         <FaArrowRight className={classNames(
                           'inline ml-2 w-3 h-3',
