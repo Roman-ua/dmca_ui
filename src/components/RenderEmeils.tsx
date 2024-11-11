@@ -149,6 +149,17 @@ const htmlFiles = [
     vars: true
   },
   {
+    link: 'Review_User.html',
+    title: '📧 Review User',
+    sectionId: 4,
+    subj: 'Request to Review User {user_email}',
+    subjOne: 'Request to Review User ',
+    varOne: '',
+    subjTwo: '',
+    varTwo: '{user_email}',
+    vars: true
+  },
+  {
     link: 'Password_Reset.html',
     title: '📧 Password Reset',
     sectionId: 4,
@@ -269,7 +280,7 @@ const RenderEmails = () => {
   console.log(htmlContent, 'htmlContent')
   return (
     <div>
-      <div className="pb-10 bg-white">
+      <div className="pb-10 bg-white px-8">
         {sections.map((section, index) => {
           const currentButtons = htmlFiles.filter((file) => file.sectionId === section.id);
           return (
